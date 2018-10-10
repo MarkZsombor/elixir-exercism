@@ -22,8 +22,10 @@ defmodule Words do
   end
 
   # Can't feed argument into embeded function with piupes?
-  def countList(sentence) do
-    Map.new(sentence, fn x -> {x, Enum.count(sentence, fn y -> y == x end)} end)
+  def count_list(sentence) do
+    sentence
+    |> Enum.uniq()
+    |> Map.new(fn x -> {x, Enum.count(sentence, fn y -> y == x end)} end)
   end
 
 end
